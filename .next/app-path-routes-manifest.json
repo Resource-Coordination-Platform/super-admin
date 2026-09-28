@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/_global-error/page": "/_global-error",
+  "/login/page": "/login",
+  "/page": "/",
+  "/(dashboard)/dashboard/page": "/dashboard",
+  "/(dashboard)/infrastructure/page": "/infrastructure",
+  "/(dashboard)/subscriptions/page": "/subscriptions",
+  "/(dashboard)/super-admins/page": "/super-admins",
+  "/(dashboard)/tenants/page": "/tenants",
+  "/(dashboard)/users/page": "/users"
+}

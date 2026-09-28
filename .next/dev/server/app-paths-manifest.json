@@ -1,0 +1,6 @@
+{
+  "/(dashboard)/infrastructure/page": "app/(dashboard)/infrastructure/page.js",
+  "/(dashboard)/super-admins/page": "app/(dashboard)/super-admins/page.js",
+  "/(dashboard)/users/page": "app/(dashboard)/users/page.js",
+  "/(dashboard)/subscriptions/page": "app/(dashboard)/subscriptions/page.js"
+}
