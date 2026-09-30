@@ -23,6 +23,7 @@ export function TenantModal({
   const isEdit = !!tenant;
   const [submitting, setSubmitting] = React.useState(false);
   const [mapPickerOpen, setMapPickerOpen] = React.useState(false);
+  const [selectedAddress, setSelectedAddress] = React.useState<string>("");
 
   // Form State
   const [name, setName] = React.useState("");
@@ -49,12 +50,14 @@ export function TenantModal({
       setLongitude(tenant.longitude !== null ? String(tenant.longitude) : "");
       setPlan(tenant.subscription_plan || "pro");
       setContactEmail(tenant.contact_email || "");
+      setSelectedAddress("");
     } else {
       setName("");
       setSlug("");
       setDescription("");
       setLatitude("");
       setLongitude("");
+      setSelectedAddress("");
       setPlan("pro");
       setDurationDays("30");
       setContactEmail("");
@@ -254,17 +257,24 @@ export function TenantModal({
             </div>
 
             {latitude && longitude && (
-              <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 px-3 py-2 text-xs">
-                <div className="flex items-center gap-2 text-slate-600">
-                  <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>
-                    Pinned: <strong className="font-mono text-slate-800">{latitude}, {longitude}</strong>
-                  </span>
+              <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 p-2.5 text-xs">
+                <div className="flex items-start gap-2 text-slate-600 min-w-0">
+                  <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse mt-1 shrink-0" />
+                  <div className="min-w-0">
+                    <div>
+                      Pinned: <strong className="font-mono text-slate-800">{latitude}, {longitude}</strong>
+                    </div>
+                    {selectedAddress && (
+                      <p className="text-[11px] text-slate-500 truncate mt-0.5" title={selectedAddress}>
+                        📍 {selectedAddress}
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setMapPickerOpen(true)}
-                  className="text-[11px] font-medium text-brand-600 hover:text-brand-700 hover:underline cursor-pointer"
+                  className="text-[11px] font-medium text-brand-600 hover:text-brand-700 hover:underline cursor-pointer shrink-0 ml-2"
                 >
                   Adjust on Map →
                 </button>
@@ -338,9 +348,11 @@ export function TenantModal({
       onClose={() => setMapPickerOpen(false)}
       initialLat={latitude ? parseFloat(latitude) : undefined}
       initialLng={longitude ? parseFloat(longitude) : undefined}
-      onSelect={(lat, lng) => {
+      initialAddress={selectedAddress}
+      onSelect={(lat, lng, address) => {
         setLatitude(lat.toFixed(6));
         setLongitude(lng.toFixed(6));
+        if (address) setSelectedAddress(address);
       }}
     />
     </>
