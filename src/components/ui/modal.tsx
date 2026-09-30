@@ -11,6 +11,7 @@ export function Modal({
   description,
   children,
   maxWidth = "max-w-lg",
+  zIndex = "z-50",
 }: {
   open: boolean;
   onClose: () => void;
@@ -18,6 +19,7 @@ export function Modal({
   description?: string;
   children: React.ReactNode;
   maxWidth?: string;
+  zIndex?: string;
 }) {
   React.useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -28,7 +30,10 @@ export function Modal({
       window.addEventListener("keydown", onKeyDown);
     }
     return () => {
-      document.body.style.overflow = "unset";
+      const remainingModals = document.querySelectorAll(".modal-container-root");
+      if (remainingModals.length <= 1) {
+        document.body.style.overflow = "unset";
+      }
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [open, onClose]);
@@ -36,7 +41,7 @@ export function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className={cn("modal-container-root fixed inset-0 flex items-center justify-center p-4", zIndex)}>
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity animate-fade-in"

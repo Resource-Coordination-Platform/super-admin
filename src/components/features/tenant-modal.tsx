@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
+import { MapPin } from "lucide-react";
 import { Modal } from "@/components/ui/modal";
 import { Button, Field, Input, Select, Textarea } from "@/components/ui/primitives";
+import { LocationPickerModal } from "@/components/features/location-picker-modal";
 import { toast } from "@/components/ui/toast";
 import { api, ApiError } from "@/lib/api";
 import type { TenantCreate, TenantSummary, TenantUpdate } from "@/lib/types";
@@ -20,6 +22,7 @@ export function TenantModal({
 }) {
   const isEdit = !!tenant;
   const [submitting, setSubmitting] = React.useState(false);
+  const [mapPickerOpen, setMapPickerOpen] = React.useState(false);
 
   // Form State
   const [name, setName] = React.useState("");
@@ -126,8 +129,9 @@ export function TenantModal({
   }
 
   return (
-    <Modal
-      open={open}
+    <>
+      <Modal
+        open={open}
       onClose={onClose}
       title={isEdit ? "Edit Organization" : "Onboard New Organization (CBO)"}
       description={
@@ -206,25 +210,66 @@ export function TenantModal({
             </Field>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Field label="Latitude" hint="For GIS command map">
-              <Input
-                type="number"
-                step="any"
-                value={latitude}
-                onChange={(e) => setLatitude(e.target.value)}
-                placeholder="6.0535"
-              />
-            </Field>
-            <Field label="Longitude" hint="For GIS command map">
-              <Input
-                type="number"
-                step="any"
-                value={longitude}
-                onChange={(e) => setLongitude(e.target.value)}
-                placeholder="80.2210"
-              />
-            </Field>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-semibold text-slate-700">
+                  GIS Geographic Coordinates
+                </span>
+                <span className="text-[11px] text-slate-400 ml-1.5 hidden sm:inline">
+                  (Used for platform disaster mapping)
+                </span>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => setMapPickerOpen(true)}
+                className="flex items-center gap-1.5 text-xs text-brand-600 border-brand-200 bg-brand-50/70 hover:bg-brand-100 hover:text-brand-700 transition-colors shadow-2xs"
+              >
+                <MapPin className="h-3.5 w-3.5 text-brand-600" />
+                Select on Map
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Field label="Latitude" hint="For GIS command map">
+                <Input
+                  type="number"
+                  step="any"
+                  value={latitude}
+                  onChange={(e) => setLatitude(e.target.value)}
+                  placeholder="6.0535"
+                />
+              </Field>
+              <Field label="Longitude" hint="For GIS command map">
+                <Input
+                  type="number"
+                  step="any"
+                  value={longitude}
+                  onChange={(e) => setLongitude(e.target.value)}
+                  placeholder="80.2210"
+                />
+              </Field>
+            </div>
+
+            {latitude && longitude && (
+              <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200/80 px-3 py-2 text-xs">
+                <div className="flex items-center gap-2 text-slate-600">
+                  <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>
+                    Pinned: <strong className="font-mono text-slate-800">{latitude}, {longitude}</strong>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMapPickerOpen(true)}
+                  className="text-[11px] font-medium text-brand-600 hover:text-brand-700 hover:underline cursor-pointer"
+                >
+                  Adjust on Map →
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -287,5 +332,17 @@ export function TenantModal({
         </div>
       </form>
     </Modal>
+
+    <LocationPickerModal
+      open={mapPickerOpen}
+      onClose={() => setMapPickerOpen(false)}
+      initialLat={latitude ? parseFloat(latitude) : undefined}
+      initialLng={longitude ? parseFloat(longitude) : undefined}
+      onSelect={(lat, lng) => {
+        setLatitude(lat.toFixed(6));
+        setLongitude(lng.toFixed(6));
+      }}
+    />
+    </>
   );
 }
