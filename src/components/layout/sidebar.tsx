@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Sparkles, X } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/lib/format";
 import { NAV_ITEMS } from "./nav";
 
@@ -107,19 +107,6 @@ export function Sidebar({
             );
           })}
         </nav>
-
-        {/* Bottom indicator */}
-        <div className="p-4 border-t border-white/5">
-          <div className="rounded-xl bg-white/5 border border-white/5 p-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-              <Sparkles className="h-4 w-4 text-coral-400" />
-              <span>Multi-Tenant Engine</span>
-            </div>
-            <p className="mt-1 text-[11px] text-sidebar-muted">
-              SaaS Infrastructure with automated lifecycle guards.
-            </p>
-          </div>
-        </div>
       </aside>
     </>
   );
