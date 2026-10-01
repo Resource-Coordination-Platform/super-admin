@@ -84,11 +84,11 @@ export default function SuperAdminsPage() {
         {admins.map((a) => (
           <div
             key={a.id}
-            className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-card hover:shadow-md transition-shadow"
+            className="glass-card relative overflow-hidden rounded-2xl border border-border p-5 shadow-card hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-bold text-sm shadow-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-teal-700 text-white font-bold text-sm shadow-sm">
                   {a.full_name.charAt(0).toUpperCase()}
                 </div>
                 <div>

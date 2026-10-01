@@ -41,25 +41,30 @@ export function Modal({
   if (!open) return null;
 
   return (
-    <div className={cn("modal-container-root fixed inset-0 flex items-center justify-center p-4", zIndex)}>
+    <div
+      className={cn(
+        "modal-container-root fixed inset-0 flex items-center justify-center p-4",
+        zIndex,
+      )}
+    >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity animate-fade-in"
+        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity animate-fade-in"
         onClick={onClose}
       />
 
       {/* Dialog box */}
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-2xl bg-white shadow-elevated transition-all animate-scale-in max-h-[90vh] flex flex-col",
+          "glass-modal relative w-full overflow-hidden rounded-2xl bg-surface shadow-elevated transition-all animate-scale-in max-h-[90vh] flex flex-col border border-border",
           maxWidth,
         )}
       >
-        <div className="flex items-start justify-between border-b border-slate-100 p-5">
+        <div className="flex items-start justify-between border-b border-border p-5">
           <div>
             <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
             {description && (
-              <p className="mt-1 text-xs text-slate-500">{description}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{description}</p>
             )}
           </div>
           <button

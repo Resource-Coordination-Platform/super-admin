@@ -17,18 +17,18 @@ export function StatCard({
   action?: React.ReactNode;
 }) {
   const iconVariants = {
-    default: "bg-slate-100 text-slate-700",
-    brand: "bg-blue-100 text-blue-700",
-    purple: "bg-purple-100 text-purple-700",
-    warning: "bg-amber-100 text-amber-700",
-    danger: "bg-rose-100 text-rose-700",
-    success: "bg-emerald-100 text-emerald-700",
+    default: "bg-slate-100 text-slate-700 ring-1 ring-slate-200",
+    brand: "bg-coral-50 text-coral-700 ring-1 ring-coral-200/80",
+    purple: "bg-violet-50 text-violet-700 ring-1 ring-violet-200",
+    warning: "bg-amber-50 text-amber-700 ring-1 ring-amber-200",
+    danger: "bg-rose-50 text-rose-700 ring-1 ring-rose-200",
+    success: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200",
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-card transition-all hover:shadow-md">
+    <div className="glass-stat relative overflow-hidden rounded-2xl border border-border bg-surface p-5 shadow-card transition-all">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+        <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
           {title}
         </span>
         <div
@@ -46,7 +46,7 @@ export function StatCard({
             {value}
           </p>
           {subvalue && (
-            <p className="mt-1 text-xs text-slate-500 font-medium">
+            <p className="mt-1 text-xs text-muted-foreground font-medium">
               {subvalue}
             </p>
           )}

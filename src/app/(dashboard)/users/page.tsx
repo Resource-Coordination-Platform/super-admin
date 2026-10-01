@@ -98,7 +98,7 @@ export default function UsersDirectoryPage() {
   function roleBadge(type: UserType) {
     const styles: Record<string, string> = {
       SUPER_ADMIN: "bg-purple-100 text-purple-800 border-purple-200",
-      TENANT_ADMIN: "bg-blue-100 text-blue-800 border-blue-200",
+      TENANT_ADMIN: "bg-brand-50 text-brand-800 border-brand-200",
       COORDINATOR: "bg-sky-100 text-sky-800 border-sky-200",
       VOLUNTEER: "bg-emerald-100 text-emerald-800 border-emerald-200",
       VICTIM: "bg-amber-100 text-amber-800 border-amber-200",

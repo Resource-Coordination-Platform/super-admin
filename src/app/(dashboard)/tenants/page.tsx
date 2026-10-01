@@ -326,7 +326,7 @@ export default function TenantsPage() {
                           variant="outline"
                           size="sm"
                           onClick={() => setRenewTarget(t)}
-                          className="h-7 px-2 text-[11px] text-blue-600 border-blue-200 hover:bg-blue-50"
+                          className="h-7 px-2 text-[11px] text-brand-700 border-brand-200 hover:bg-brand-50"
                           title="Extend or renew subscription"
                         >
                           <CalendarCheck2 className="h-3.5 w-3.5" />

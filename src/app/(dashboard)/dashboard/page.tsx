@@ -113,8 +113,8 @@ export default function DashboardPage() {
     });
 
     return [
-      { name: "Active", value: active, color: "#10b981" },
-      { name: "Expiring / Expired", value: expired, color: "#f59e0b" },
+      { name: "Active", value: active, color: "#0b7261" },
+      { name: "Expiring / Expired", value: expired, color: "#e97d4d" },
       { name: "Suspended", value: suspended, color: "#e11d48" },
     ];
   }, [tenants]);
@@ -254,11 +254,11 @@ export default function DashboardPage() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Tenant Status Chart */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">
+        <div className="glass-card rounded-2xl border border-border p-5 shadow-card">
           <h3 className="text-sm font-bold text-slate-900">
             Tenant Status Breakdown
           </h3>
-          <p className="text-xs text-slate-500 mb-4">
+          <p className="text-xs text-muted-foreground mb-4">
             Proportion of active, expiring, and suspended organizations.
           </p>
           <div className="h-64">
@@ -285,11 +285,11 @@ export default function DashboardPage() {
         </div>
 
         {/* User Population Chart */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card">
+        <div className="glass-card rounded-2xl border border-border p-5 shadow-card">
           <h3 className="text-sm font-bold text-slate-900">
             Platform Users by Role
           </h3>
-          <p className="text-xs text-slate-500 mb-4">
+          <p className="text-xs text-muted-foreground mb-4">
             Distribution across global pool (volunteers, victims, donors) and tenant staff.
           </p>
           <div className="h-64">
@@ -299,7 +299,7 @@ export default function DashboardPage() {
                 <XAxis dataKey="name" tick={{ fontSize: 11 }} />
                 <YAxis allowDecimals={false} tick={{ fontSize: 11 }} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#3563ff" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="count" fill="#0b7261" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -307,13 +307,13 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Organizations Quick Table */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card space-y-4">
+      <div className="glass-card rounded-2xl border border-border p-5 shadow-card space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-sm font-bold text-slate-900">
               Active Organizations Roster
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-muted-foreground">
               Top relief centers with their real-time subscription status and staff counts.
             </p>
           </div>
@@ -325,7 +325,7 @@ export default function DashboardPage() {
           </a>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="glass-table overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-700">
             <thead className="border-b border-slate-100 bg-slate-50/70 text-[11px] font-bold uppercase tracking-wider text-slate-500">
               <tr>

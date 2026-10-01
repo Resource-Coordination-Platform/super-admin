@@ -199,7 +199,7 @@ export default function InfrastructurePage() {
           return (
             <div
               key={s.name}
-              className="rounded-2xl border border-slate-200 bg-white p-5 shadow-card hover:shadow-md transition-shadow flex flex-col justify-between"
+              className="glass-card rounded-2xl border border-border p-5 shadow-card hover:shadow-md transition-shadow flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between">

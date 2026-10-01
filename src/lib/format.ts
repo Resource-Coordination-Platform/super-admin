@@ -78,7 +78,7 @@ export function planBadgeInfo(plan: string | null | undefined): {
     case "pro":
       return {
         label: "Professional",
-        className: "bg-blue-100 text-blue-800 border-blue-200",
+        className: "bg-brand-50 text-brand-800 border-brand-200",
       };
     case "starter":
       return {

@@ -248,7 +248,7 @@ export default function SubscriptionsPage() {
                   <tr key={t.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="px-5 py-3.5 font-semibold text-slate-900">
                       <div className="flex items-center gap-2.5">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 shrink-0">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-coral-50 text-coral-600 ring-1 ring-coral-200/80 shrink-0">
                           <Building2 className="h-4 w-4" />
                         </div>
                         <div>

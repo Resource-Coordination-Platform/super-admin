@@ -5,16 +5,20 @@ type AppRoutes = "/" | "/dashboard" | "/infrastructure" | "/login" | "/subscript
 type PageRoutes = never
 type LayoutRoutes = "/"
 type RedirectRoutes = never
-type RewriteRoutes = "/api/[[...path]]"
+type RewriteRoutes = "/.well-known/[[...path]]" | "/api/[[...path]]" | "/health" | "/health/services" | "/readiness"
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes
 
 
 interface ParamMap {
   "/": {}
+  "/.well-known/[[...path]]": { "path"?: string[]; }
   "/api/[[...path]]": { "path"?: string[]; }
   "/dashboard": {}
+  "/health": {}
+  "/health/services": {}
   "/infrastructure": {}
   "/login": {}
+  "/readiness": {}
   "/subscriptions": {}
   "/super-admins": {}
   "/tenants": {}

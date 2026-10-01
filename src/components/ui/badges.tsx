@@ -9,7 +9,7 @@ export function StatusBadge({
 }) {
   if (status === "suspended") {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-0.5 text-xs font-semibold text-rose-700 border border-rose-200">
+      <span className="glass-badge inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-0.5 text-xs font-semibold text-rose-700 border border-rose-200">
         <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
         Suspended
       </span>
@@ -18,7 +18,7 @@ export function StatusBadge({
 
   if (isExpired) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700 border border-amber-200">
+      <span className="glass-badge inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700 border border-amber-200">
         <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
         Expired
       </span>
@@ -26,7 +26,7 @@ export function StatusBadge({
   }
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
+    <span className="glass-badge inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-200">
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
       Active
     </span>
@@ -38,7 +38,7 @@ export function SubscriptionPlanBadge({ plan }: { plan: string | null | undefine
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-lg px-2.5 py-0.5 text-[11px] font-semibold border",
+        "glass-badge inline-flex items-center rounded-lg px-2.5 py-0.5 text-[11px] font-semibold border",
         className,
       )}
     >
@@ -58,7 +58,7 @@ export function ExpiryBadge({ days }: { days: number | null | undefined }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md px-2 py-0.5 text-xs border",
+        "glass-badge inline-flex items-center rounded-md px-2 py-0.5 text-xs border",
         styles[variant],
       )}
     >

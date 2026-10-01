@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST='{"components/features/tenant-map.tsx -> leaflet":{"id":92978,"files":["static/chunks/4af7f136.6c80bf2974dd3519.js"]}}';
+self.__REACT_LOADABLE_MANIFEST='{"components/features/location-picker-modal.tsx -> leaflet":{"id":92978,"files":["static/chunks/4af7f136.6c80bf2974dd3519.js"]},"components/features/tenant-map.tsx -> leaflet":{"id":92978,"files":["static/chunks/4af7f136.6c80bf2974dd3519.js"]}}';

@@ -24,17 +24,25 @@ export default function DashboardLayout({
 
   if (isLoading || !isAuthenticated) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-900 text-white">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-brand-500" />
-          <p className="text-xs text-slate-400 font-medium">Verifying Platform Operator Credentials...</p>
+          <Loader2 className="h-8 w-8 animate-spin text-brand-600" />
+          <p className="text-xs text-muted-foreground font-medium">
+            Verifying Platform Operator Credentials...
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div
+      className="min-h-screen"
+      style={{
+        background:
+          "linear-gradient(135deg, #fff7f2 0%, #ffe8d9 20%, #fff1eb 45%, #ffecd6 70%, #fff5ee 100%)",
+      }}
+    >
       <Sidebar mobileOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
       <div className="lg:pl-64">
         <Topbar onMenu={() => setMobileOpen(true)} />

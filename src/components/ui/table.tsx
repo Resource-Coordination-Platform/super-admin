@@ -7,7 +7,7 @@ export function Table({
   ...props
 }: React.HTMLAttributes<HTMLTableElement>) {
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="glass-table w-full overflow-x-auto">
       <table
         className={cn("w-full text-left text-sm text-slate-700", className)}
         {...props}
@@ -26,7 +26,7 @@ export function TableHeader({
   return (
     <thead
       className={cn(
-        "border-b border-slate-200 bg-slate-50/75 text-xs font-semibold uppercase tracking-wider text-slate-500",
+        "border-b border-border bg-slate-50/60 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
         className,
       )}
       {...props}
@@ -43,7 +43,7 @@ export function TableBody({
 }: React.HTMLAttributes<HTMLTableSectionElement>) {
   return (
     <tbody
-      className={cn("divide-y divide-slate-100 bg-white", className)}
+      className={cn("divide-y divide-border/60 bg-transparent", className)}
       {...props}
     >
       {children}
@@ -58,7 +58,7 @@ export function TableRow({
 }: React.HTMLAttributes<HTMLTableRowElement>) {
   return (
     <tr
-      className={cn("transition-colors hover:bg-slate-50/80", className)}
+      className={cn("transition-colors hover:bg-white/50", className)}
       {...props}
     >
       {children}
@@ -104,13 +104,13 @@ export function EmptyState({
   return (
     <div className="flex flex-col items-center justify-center p-12 text-center">
       {Icon && (
-        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-400">
+        <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-coral-50 text-coral-600 ring-1 ring-coral-200">
           <Icon className="h-6 w-6" />
         </div>
       )}
       <h4 className="text-sm font-semibold text-slate-800">{title}</h4>
       {description && (
-        <p className="mt-1 text-xs text-slate-500 max-w-sm">{description}</p>
+        <p className="mt-1 text-xs text-muted-foreground max-w-sm">{description}</p>
       )}
       {action && <div className="mt-4">{action}</div>}
     </div>

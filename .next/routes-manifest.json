@@ -23,6 +23,26 @@
         "source": "/api/:path*",
         "destination": "https://api.sahasralk.me/api/:path*",
         "regex": "^/api(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      },
+      {
+        "source": "/health",
+        "destination": "https://api.sahasralk.me/health",
+        "regex": "^/health(?:/)?$"
+      },
+      {
+        "source": "/readiness",
+        "destination": "https://api.sahasralk.me/readiness",
+        "regex": "^/readiness(?:/)?$"
+      },
+      {
+        "source": "/health/services",
+        "destination": "https://api.sahasralk.me/health/services",
+        "regex": "^/health/services(?:/)?$"
+      },
+      {
+        "source": "/.well-known/:path*",
+        "destination": "https://api.sahasralk.me/.well-known/:path*",
+        "regex": "^/\\.well-known(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
       }
     ],
     "fallback": []

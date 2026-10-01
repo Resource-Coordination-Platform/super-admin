@@ -6,7 +6,7 @@ import {
   LogOut,
   Menu,
   RefreshCw,
-  ShieldAlert,
+  ShieldCheck,
   UserCheck,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth";
@@ -65,29 +65,42 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
   }
 
   return (
-    <header className="sticky top-0 z-30 flex h-18 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur-md lg:px-8">
+    <header className="glass-topbar sticky top-0 z-30 flex h-16 items-center justify-between border-b border-coral-200/60 bg-surface/90 px-4 backdrop-blur lg:px-8">
       <div className="flex items-center gap-3">
         <button
           onClick={onMenu}
-          className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden"
+          className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 lg:hidden"
           aria-label="Open sidebar"
         >
           <Menu className="h-5 w-5" />
         </button>
 
-        <div className="hidden sm:flex items-center gap-2 rounded-xl bg-slate-50 px-3 py-1.5 border border-slate-200/80 text-xs text-slate-500 font-medium">
-          <Clock className="h-3.5 w-3.5 text-slate-400" />
+        <div className="flex items-center gap-2.5 lg:hidden">
+          <img
+            src="/logo.png"
+            alt="RCP Logo"
+            className="h-8 w-8 rounded-lg object-contain"
+          />
+        </div>
+
+        <div className="hidden sm:flex items-center gap-2 rounded-xl bg-brand-50/80 px-3 py-1.5 border border-brand-200/60 text-xs text-brand-800 font-medium">
+          <Clock className="h-3.5 w-3.5 text-brand-600" />
           <span>{time || "UTC"}</span>
         </div>
       </div>
 
       <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 ring-1 ring-inset ring-emerald-200 md:flex">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          HQ Connected
+        </div>
+
         <Button
           variant="outline"
           size="sm"
           loading={checking}
           onClick={handleAutoSuspendExpired}
-          className="hidden md:inline-flex text-xs font-semibold border-amber-300 text-amber-900 bg-amber-50/50 hover:bg-amber-100/70"
+          className="hidden md:inline-flex text-xs font-semibold border-amber-300/80 text-amber-900 bg-amber-50/70 hover:bg-amber-100/90"
           title="Scan active tenants and suspend any whose subscription expired"
         >
           <RefreshCw className="h-3.5 w-3.5 text-amber-700" />
@@ -95,16 +108,16 @@ export function Topbar({ onMenu }: { onMenu: () => void }) {
         </Button>
 
         {/* User Pill */}
-        <div className="flex items-center gap-3 pl-2 border-l border-slate-200">
+        <div className="flex items-center gap-3 pl-2 border-l border-coral-200/60">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-semibold text-xs shadow-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-white font-semibold text-xs shadow-sm">
               <UserCheck className="h-4 w-4" />
             </div>
             <div className="hidden sm:block text-left leading-tight">
               <p className="text-xs font-bold text-slate-900">
                 {profile?.full_name || "Super Admin"}
               </p>
-              <p className="text-[11px] text-slate-500 max-w-[140px] truncate">
+              <p className="text-[11px] text-muted-foreground max-w-[140px] truncate">
                 {profile?.email}
               </p>
             </div>
